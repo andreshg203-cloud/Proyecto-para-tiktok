@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBER | Restaurante</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">EMBER<span>.</span></a>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#menu">Menú</a>
+            <a href="#nosotros">Nosotros</a>
+        </nav>
+
+        <a href="#reservas" class="btn-nav">Reservar mesa</a>
+
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <p class="etiqueta">COCINA ARTESANAL · SABOR AUTÉNTICO</p>
+
+            <h1>El sabor que<br>enciende tus <span>sentidos.</span></h1>
+
+            <p class="descripcion">
+                Ingredientes frescos, fuego y pasión.
+                Una experiencia gastronómica que merece repetirse.
+            </p>
+
+            <div class="hero-botones">
+                <a href="#menu" class="btn-principal">Descubrir menú →</a>
+                <a href="#reservas" class="btn-secundario">Reservar mesa</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        <p class="etiqueta">NUESTRA SELECCIÓN</p>
+        <h2>Favoritos de la casa</h2>
+
+        <div class="filtros" role="group" aria-label="Filtrar menú por categoría">
+            <button class="filtro activo" data-filtro="todos">Todos</button>
+            <button class="filtro" data-filtro="hamburguesas">Hamburguesas</button>
+            <button class="filtro" data-filtro="acompanantes">Acompañantes</button>
+            <button class="filtro" data-filtro="bebidas">Bebidas</button>
+        </div>
+
+        <!-- Las tarjetas se generan desde funciones.js -->
+        <div class="productos" id="productos"></div>
+    </section>
+
+    <section class="nosotros reveal" id="nosotros">
+        <p class="etiqueta">MÁS QUE UNA HAMBURGUESA</p>
+        <h2>Hecho con pasión.<br>Servido con carácter.</h2>
+        <p>En EMBER creemos que los mejores momentos comienzan alrededor de una buena mesa.</p>
+    </section>
+
+    <section class="reservas reveal" id="reservas">
+        <p class="etiqueta">RESERVAS</p>
+        <h2>¿Nos vemos esta noche?</h2>
+        <p class="intro">Completa el formulario y te escribimos por WhatsApp para confirmar tu mesa.</p>
+
+        <form class="form-reserva" id="form-reserva" novalidate>
+            <div class="campo">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" autocomplete="name">
+                <span class="error" id="error-nombre"></span>
+            </div>
+
+            <div class="campo">
+                <label for="personas">Personas</label>
+                <input type="number" id="personas" name="personas" min="1" max="12" value="2">
+                <span class="error" id="error-personas"></span>
+            </div>
+
+            <div class="campo">
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" name="fecha">
+                <span class="error" id="error-fecha"></span>
+            </div>
+
+            <div class="campo">
+                <label for="hora">Hora</label>
+                <input type="time" id="hora" name="hora" min="12:00" max="22:00">
+                <span class="error" id="error-hora"></span>
+            </div>
+
+            <div class="campo completo">
+                <label for="comentarios">Comentarios (opcional)</label>
+                <textarea id="comentarios" name="comentarios" rows="3" placeholder="Cumpleaños, alergias, silla para bebé..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-principal completo">Reservar por WhatsApp</button>
+            <p class="form-ok completo" id="form-ok" hidden>¡Listo! Se abrió WhatsApp con los datos de tu reserva.</p>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo">EMBER<span>.</span></a>
+                <p class="footer-texto">Cocina artesanal con fuego, ingredientes frescos y mucho carácter.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Horarios</h4>
+                <ul>
+                    <li>Lunes a domingo</li>
+                    <li>12:00 p. m. – 10:00 p. m.</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>Bogotá, Colombia</li>
+                    <li>+57 300 000 0000</li>
+                    <li class="redes">
+                        <a href="#" aria-label="Instagram de EMBER">Instagram</a>
+                        <a href="#" aria-label="Facebook de EMBER">Facebook</a>
+                        <a href="#" aria-label="TikTok de EMBER">TikTok</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mapa">
+            <iframe
+                src="https://www.google.com/maps?q=Bogot%C3%A1%2C+Colombia&output=embed"
+                title="Ubicación de EMBER"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <p class="copy">© 2026 EMBER. Proyecto conceptual de portafolio.</p>
+    </footer>
+
+    <script src="funciones.js"></script>
+</body>
+</html> 

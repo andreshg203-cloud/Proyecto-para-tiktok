@@ -1,0 +1,468 @@
+:root {
+    --naranja: #e99b42;
+    --oscuro: #111;
+    --gris-card: #1c1c1c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    background: var(--oscuro);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: 85px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    transition: background .3s;
+}
+
+.navbar.scrolled {
+    background: rgba(17, 17, 17, .85);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    color: white;
+    font-size: 28px;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+
+.logo span { color: var(--naranja); }
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color .3s, border-color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: var(--naranja);
+    border-bottom-color: var(--naranja);
+}
+
+.btn-nav {
+    padding: 13px 22px;
+    background: var(--naranja);
+    color: var(--oscuro);
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.menu-toggle { display: none; }
+
+/* ---------- HERO ---------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 10% 80px;
+    background:
+        linear-gradient(90deg, #111 5%, rgba(17,17,17,.8) 45%, transparent),
+        url("https://images.unsplash.com/photo-1550547660-d9450f859349?w=1800")
+        center/cover;
+}
+
+.hero-content { max-width: 600px; }
+
+.etiqueta {
+    color: var(--naranja);
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero h1 span { color: var(--naranja); }
+
+.descripcion {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    max-width: 440px;
+}
+
+.hero-botones {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* ---------- BOTONES ---------- */
+.btn-principal,
+.btn-secundario {
+    display: inline-block;
+    padding: 17px 28px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform .2s, box-shadow .2s, background .3s, color .3s;
+}
+
+.btn-principal {
+    background: var(--naranja);
+    color: var(--oscuro);
+    border: 2px solid var(--naranja);
+}
+
+.btn-secundario {
+    border: 2px solid var(--naranja);
+    color: var(--naranja);
+}
+
+.btn-principal:hover,
+.btn-nav:hover {
+    background: white;
+    border-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(233, 155, 66, .35);
+}
+
+.btn-secundario:hover {
+    background: var(--naranja);
+    color: var(--oscuro);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(233, 155, 66, .35);
+}
+
+/* ---------- MENÚ ---------- */
+.menu {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.menu h2,
+.nosotros h2,
+.reservas h2 {
+    font-size: 42px;
+    margin-bottom: 45px;
+}
+
+/* ---------- FILTROS ---------- */
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 45px;
+}
+
+.filtro {
+    background: transparent;
+    border: 2px solid #333;
+    color: #ddd;
+    padding: 10px 22px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.filtro:hover {
+    border-color: var(--naranja);
+    color: var(--naranja);
+}
+
+.filtro.activo {
+    background: var(--naranja);
+    border-color: var(--naranja);
+    color: var(--oscuro);
+    font-weight: bold;
+}
+
+/* ---------- PRODUCTOS ---------- */
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: left;
+}
+
+.producto {
+    background: var(--gris-card);
+    padding-bottom: 25px;
+    overflow: hidden;
+}
+
+.producto.oculto { display: none; }
+
+.producto img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.producto:hover img { transform: scale(1.06); }
+
+.sin-imagen {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    background: #262626;
+}
+
+.producto h3,
+.producto p,
+.producto strong {
+    margin: 18px 20px;
+    display: block;
+}
+
+.producto p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.producto strong {
+    color: var(--naranja);
+    font-size: 20px;
+}
+
+/* ---------- NOSOTROS / RESERVAS ---------- */
+.nosotros {
+    padding: 100px 10%;
+    background: var(--gris-card);
+    text-align: center;
+}
+
+.nosotros p:last-child,
+.reservas p {
+    color: #bbb;
+    line-height: 1.8;
+}
+
+.reservas {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.reservas .intro {
+    max-width: 520px;
+    margin: -20px auto 40px;
+}
+
+/* ---------- FORMULARIO ---------- */
+.form-reserva {
+    max-width: 680px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    text-align: left;
+}
+
+.form-reserva .completo { grid-column: 1 / -1; }
+
+.campo { display: flex; flex-direction: column; gap: 8px; }
+
+.campo label {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #ccc;
+}
+
+.campo input,
+.campo textarea {
+    background: var(--gris-card);
+    border: 2px solid #333;
+    color: white;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    color-scheme: dark;
+    transition: border-color .3s;
+}
+
+.campo textarea { resize: vertical; }
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--naranja);
+}
+
+.campo input.invalido { border-color: #ff6b6b; }
+
+.error {
+    color: #ff6b6b;
+    font-size: 12px;
+    min-height: 14px;
+}
+
+.form-reserva button.btn-principal {
+    cursor: pointer;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.form-ok {
+    color: var(--naranja);
+    text-align: center;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #080808;
+    padding: 70px 8% 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 45px;
+}
+
+.footer-texto {
+    color: #888;
+    line-height: 1.7;
+    margin-top: 18px;
+    max-width: 320px;
+    font-size: 14px;
+}
+
+.footer-col h4 {
+    color: var(--naranja);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col li {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.redes {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.redes a {
+    color: #ddd;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .3s, border-color .3s;
+}
+
+.redes a:hover {
+    color: var(--naranja);
+    border-bottom-color: var(--naranja);
+}
+
+.mapa iframe {
+    width: 100%;
+    height: 280px;
+    border: 0;
+    filter: grayscale(1) invert(.92) contrast(.9);
+}
+
+.copy {
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ---------- ANIMACIÓN DE ENTRADA ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+.producto.visible:hover { transform: translateY(-8px); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .navbar { padding: 0 20px; }
+
+    .btn-nav { display: none; }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: 0;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    nav { display: none; }
+
+    .navbar.abierto { background: rgba(17, 17, 17, .97); }
+
+    .navbar.abierto nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        width: 100%;
+        padding: 25px 20px;
+        background: rgba(17, 17, 17, .97);
+    }
+
+    .hero { padding: 110px 7% 50px; }
+
+    .productos { grid-template-columns: 1fr; }
+
+    .form-reserva { grid-template-columns: 1fr; }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .mapa iframe { height: 220px; }
+}
